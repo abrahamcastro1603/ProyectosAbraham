@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Plantilla CRISP-DM | Minería de Datos</title>
+    <style>
+        :root {
+            --bg-color: #0f172a;
+            --card-bg: #1e293b;
+            --accent-color: #38bdf8;
+            --text-color: #f8fafc;
+            --text-muted: #94a3b8;
+            --border-color: #334155;
+            --btn-save: #16a34a;
+            --btn-save-hover: #15803d;
+            --btn-delete: #dc2626;
+            --btn-delete-hover: #b91c1c;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            margin: 0;
+            padding: 2rem;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 3rem;
+            border-bottom: 2px solid var(--border-color);
+            padding-bottom: 1.5rem;
+        }
+
+        h1 {
+            color: var(--accent-color);
+            margin-bottom: 0.5rem;
+        }
+
+        .phase-card {
+            background-color: var(--card-bg);
+            border-radius: 8px;
+            border: 1px solid var(--border-color);
+            padding: 1.5rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.3);
+        }
+
+        .phase-title {
+            color: var(--accent-color);
+            border-bottom: 1px solid var(--border-color);
+            padding-bottom: 0.5rem;
+            margin-top: 0;
+        }
+
+        .question-group {
+            margin-bottom: 1.5rem;
+        }
+
+        label {
+            display: block;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            color: var(--text-color);
+        }
+
+        textarea {
+            width: 100%;
+            height: 90px;
+            background-color: #0f172a;
+            border: 1px solid var(--border-color);
+            border-radius: 6px;
+            color: var(--text-color);
+            padding: 0.75rem;
+            font-family: inherit;
+            resize: vertical;
+            box-sizing: border-box;
+        }
+
+        textarea:focus {
+            outline: none;
+            border-color: var(--accent-color);
+        }
+
+        .actions {
+            display: flex;
+            gap: 0.5rem;
+            margin-top: 0.5rem;
+        }
+
+        button {
+            cursor: pointer;
+            padding: 0.5rem 1rem;
+            border: none;
+            border-radius: 4px;
+            font-weight: 600;
+            color: white;
+            transition: background-color 0.2s;
+        }
+
+        .btn-save {
+            background-color: var(--btn-save);
+        }
+        .btn-save:hover {
+            background-color: var(--btn-save-hover);
+        }
+
+        .btn-delete {
+            background-color: var(--btn-delete);
+        }
+        .btn-delete:hover {
+            background-color: var(--btn-delete-hover);
+        }
+
+        .status-msg {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            align-self: center;
+            margin-left: 0.5rem;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <header>
+        <h1>Guía Metodológica CRISP-DM</h1>
+        <p>Documentación de proyecto de Minería de Datos / Analítica Predictiva</p>
+    </header>
+
+    <!-- FASE 1 -->
+    <div class="phase-card">
+        <h2 class="phase-title">1. Comprensión del Negocio (Business Understanding)</h2>
+        
+        <div class="question-group">
+            <label for="q1">¿Cuál es el objetivo principal del proyecto y qué problema de negocio/institucional busca resolver?</label>
+            <textarea id="q1" placeholder="Escribe tu respuesta aquí..."></textarea>
+            <div class="actions">
+                <button class="btn-save" onclick="saveAnswer('q1')">Guardar</button>
+                <button class="btn-delete" onclick="deleteAnswer('q1')">Borrar</button>
+                <span id="status-q1" class="status-msg"></span>
+            </div>
+        </div>
+
+        <div class="question-group">
+            <label for="q2">¿Cuáles son los criterios de éxito del proyecto (Métricas clave/KPIs)?</label>
+            <textarea id="q2" placeholder="Escribe tu respuesta aquí..."></textarea>
+            <div class="actions">
+                <button class="btn-save" onclick="saveAnswer('q2')">Guardar</button>
+                <button class="btn-delete" onclick="deleteAnswer('q2')">Borrar</button>
+                <span id="status-q2" class="status-msg"></span>
+            </div>
+        </div>
+    </div>
+
+    <!-- FASE 2 -->
+    <div class="phase-card">
+        <h2 class="phase-title">2. Comprensión de los Datos (Data Understanding)</h2>
+        
+        <div class="question-group">
+            <label for="q3">¿Qué fuentes de datos están disponibles y cuál es su estructura/origen?</label>
+            <textarea id="q3" placeholder="Escribe tu respuesta aquí..."></textarea>
+            <div class="actions">
+                <button class="btn-save" onclick="saveAnswer('q3')">Guardar</button>
+                <button class="btn-delete" onclick="deleteAnswer('q3')">Borrar</button>
+                <span id="status-q3" class="status-msg"></span>
+            </div>
+        </div>
+
+        <div class="question-group">
+            <label for="q4">¿Cuáles son los hallazgos iniciales o problemas detectados en los datos (valores nulos, inconsistencias)?</label>
+            <textarea id="q4" placeholder="Escribe tu respuesta aquí..."></textarea>
+            <div class="actions">
+                <button class="btn-save" onclick="saveAnswer('q4')">Guardar</button>
+                <button class="btn-delete" onclick="deleteAnswer('q4')">Borrar</button>
+                <span id="status-q4" class="status-msg"></span>
+            </div>
+        </div>
+    </div>
+
+    <!-- FASE 3 -->
+    <div class="phase-card">
+        <h2 class="phase-title">3. Preparación de los Datos (Data Preparation)</h2>
+        
+        <div class="question-group">
+            <label for="q5">¿Qué técnicas de limpieza de datos se aplican (e.g. COALESCE, tratamiento de nulos, formateo)?</label>
+            <textarea id="q5" placeholder="Escribe tu respuesta aquí..."></textarea>
+            <div class="actions">
+                <button class="btn-save" onclick="saveAnswer('q5')">Guardar</button>
+                <button class="btn-delete" onclick="deleteAnswer('q5')">Borrar</button>
+                <span id="status-q5" class="status-msg"></span>
+            </div>
+        </div>
+
+        <div class="question-group">
+            <label for="q6">¿Se requiere ingeniería de características (Feature Engineering) o transformación de variables?</label>
+            <textarea id="q6" placeholder="Escribe tu respuesta aquí..."></textarea>
+            <div class="actions">
+                <button class="btn-save" onclick="saveAnswer('q6')">Guardar</button>
+                <button class="btn-delete" onclick="deleteAnswer('q6')">Borrar</button>
+                <span id="status-q6" class="status-msg"></span>
+            </div>
+        </div>
+    </div>
+
+    <!-- FASE 4 -->
+    <div class="phase-card">
+        <h2 class="phase-title">4. Modelado (Modeling)</h2>
+        
+        <div class="question-group">
+            <label for="q7">¿Qué algoritmos o modelos de minería/ML se seleccionan para el análisis?</label>
+            <textarea id="q7" placeholder="Escribe tu respuesta aquí..."></textarea>
+            <div class="actions">
+                <button class="btn-save" onclick="saveAnswer('q7')">Guardar</button>
+                <button class="btn-delete" onclick="deleteAnswer('q7')">Borrar</button>
+                <span id="status-q7" class="status-msg"></span>
+            </div>
+        </div>
+    </div>
+
+    <!-- FASE 5 -->
+    <div class="phase-card">
+        <h2 class="phase-title">5. Evaluación (Evaluation)</h2>
+        
+        <div class="question-group">
+            <label for="q8">¿Los resultados del modelo cumplen con los criterios de éxito del negocio/proyecto?</label>
+            <textarea id="q8" placeholder="Escribe tu respuesta aquí..."></textarea>
+            <div class="actions">
+                <button class="btn-save" onclick="saveAnswer('q8')">Guardar</button>
+                <button class="btn-delete" onclick="deleteAnswer('q8')">Borrar</button>
+                <span id="status-q8" class="status-msg"></span>
+            </div>
+        </div>
+    </div>
+
+    <!-- FASE 6 -->
+    <div class="phase-card">
+        <h2 class="phase-title">6. Despliegue (Deployment)</h2>
+        
+        <div class="question-group">
+            <label for="q9">¿Cómo se entregarán o presentarán los resultados (Dashboards Power BI, Reportes, API)?</label>
+            <textarea id="q9" placeholder="Escribe tu respuesta aquí..."></textarea>
+            <div class="actions">
+                <button class="btn-save" onclick="saveAnswer('q9')">Guardar</button>
+                <button class="btn-delete" onclick="deleteAnswer('q9')">Borrar</button>
+                <span id="status-q9" class="status-msg"></span>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    // Cargar respuestas guardadas al iniciar la página
+    window.onload = function() {
+        const textareas = document.querySelectorAll('textarea');
+        textareas.forEach(textarea => {
+            const savedValue = localStorage.getItem(textarea.id);
+            if (savedValue) {
+                textarea.value = savedValue;
+            }
+        });
+    };
+
+    // Función para guardar respuesta en localStorage
+    function saveAnswer(id) {
+        const val = document.getElementById(id).value;
+        localStorage.setItem(id, val);
+        
+        showStatus(id, '✓ Guardado');
+    }
+
+    // Función para borrar respuesta
+    function deleteAnswer(id) {
+        document.getElementById(id).value = '';
+        localStorage.removeItem(id);
+        
+        showStatus(id, '✗ Borrado');
+    }
+
+    // Mostrar mensaje temporal de estado
+    function showStatus(id, msg) {
+        const statusEl = document.getElementById('status-' + id);
+        statusEl.innerText = msg;
+        setTimeout(() => {
+            statusEl.innerText = '';
+        }, 2000);
+    }
+</script>
+
+</body>
+</html>
