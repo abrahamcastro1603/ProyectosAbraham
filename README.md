@@ -1,6 +1,6 @@
 <div align="center">
   <h1>¡Hola, bienvenid@ a mi perfil! 🚀</h1>
-  <p><b>Desarrollador y Minero de Datos en formación</b> | Apasionado por la tecnología, la analítica y la nube.</p>
+  <p><b>Desarrollador y Analista de Datos en formación</b> | Apasionado por la tecnología, la analítica y la nube.</p>
 </div>
 
 ---
