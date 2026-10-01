@@ -1,0 +1,445 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Documentación de Minería de Datos | CRISP-DM & KDD</title>
+    <style>
+        :root {
+            --bg-color: #0f172a;
+            --card-bg: #1e293b;
+            --accent-color: #38bdf8;
+            --text-color: #f8fafc;
+            --text-muted: #94a3b8;
+            --border-color: #334155;
+            --btn-save: #16a34a;
+            --btn-save-hover: #15803d;
+            --btn-delete: #dc2626;
+            --btn-delete-hover: #b91c1c;
+            --tab-active-bg: #38bdf8;
+            --tab-active-text: #0f172a;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            margin: 0;
+            padding: 2rem;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 2rem;
+            border-bottom: 2px solid var(--border-color);
+            padding-bottom: 1.5rem;
+        }
+
+        h1 {
+            color: var(--accent-color);
+            margin-bottom: 0.5rem;
+        }
+
+        /* NAVEGACIÓN POR PESTAÑAS (TABS) */
+        .tab-navigation {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-bottom: 2.5rem;
+        }
+
+        .tab-btn {
+            background-color: var(--card-bg);
+            color: var(--text-color);
+            border: 2px solid var(--border-color);
+            padding: 0.75rem 1.75rem;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .tab-btn:hover {
+            border-color: var(--accent-color);
+        }
+
+        .tab-btn.active {
+            background-color: var(--tab-active-bg);
+            color: var(--tab-active-text);
+            border-color: var(--tab-active-bg);
+            box-shadow: 0 0 15px rgba(56, 189, 248, 0.4);
+        }
+
+        /* CONTENIDO DE PESTAÑAS */
+        .tab-content {
+            display: none;
+        }
+
+        .tab-content.active {
+            display: block;
+            animation: fadeIn 0.4s ease-in-out;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* CARDS Y FORMULARIO */
+        .phase-card {
+            background-color: var(--card-bg);
+            border-radius: 8px;
+            border: 1px solid var(--border-color);
+            padding: 1.5rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.3);
+        }
+
+        .phase-title {
+            color: var(--accent-color);
+            border-bottom: 1px solid var(--border-color);
+            padding-bottom: 0.5rem;
+            margin-top: 0;
+        }
+
+        .question-group {
+            margin-bottom: 1.5rem;
+        }
+
+        label {
+            display: block;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            color: var(--text-color);
+        }
+
+        textarea {
+            width: 100%;
+            height: 90px;
+            background-color: #0f172a;
+            border: 1px solid var(--border-color);
+            border-radius: 6px;
+            color: var(--text-color);
+            padding: 0.75rem;
+            font-family: inherit;
+            resize: vertical;
+            box-sizing: border-box;
+        }
+
+        textarea:focus {
+            outline: none;
+            border-color: var(--accent-color);
+        }
+
+        .actions {
+            display: flex;
+            gap: 0.5rem;
+            margin-top: 0.5rem;
+        }
+
+        button {
+            cursor: pointer;
+            padding: 0.5rem 1rem;
+            border: none;
+            border-radius: 4px;
+            font-weight: 600;
+            color: white;
+            transition: background-color 0.2s;
+        }
+
+        .btn-save {
+            background-color: var(--btn-save);
+        }
+        .btn-save:hover {
+            background-color: var(--btn-save-hover);
+        }
+
+        .btn-delete {
+            background-color: var(--btn-delete);
+        }
+        .btn-delete:hover {
+            background-color: var(--btn-delete-hover);
+        }
+
+        .status-msg {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            align-self: center;
+            margin-left: 0.5rem;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <header>
+        <h1>Plataforma de Documentación en Minería de Datos</h1>
+        <p>Selecciona la metodología de trabajo para registrar tus hallazgos</p>
+    </header>
+
+    <!-- NAVEGACIÓN ENTRE METODOLOGÍAS -->
+    <div class="tab-navigation">
+        <button class="tab-btn active" onclick="switchTab('crisp-dm', this)">Metodología CRISP-DM</button>
+        <button class="tab-btn" onclick="switchTab('kdd', this)">Metodología KDD</button>
+    </div>
+
+    <!-- ================= METODOLOGÍA CRISP-DM ================= -->
+    <div id="crisp-dm" class="tab-content active">
+        
+        <!-- FASE 1 -->
+        <div class="phase-card">
+            <h2 class="phase-title">1. Comprensión del Negocio (Business Understanding)</h2>
+            
+            <div class="question-group">
+                <label for="crisp_q1">¿Cuál es el objetivo principal del proyecto y qué problema de negocio/institucional busca resolver?</label>
+                <textarea id="crisp_q1" placeholder="Escribe tu respuesta aquí..."></textarea>
+                <div class="actions">
+                    <button class="btn-save" onclick="saveAnswer('crisp_q1')">Guardar</button>
+                    <button class="btn-delete" onclick="deleteAnswer('crisp_q1')">Borrar</button>
+                    <span id="status-crisp_q1" class="status-msg"></span>
+                </div>
+            </div>
+
+            <div class="question-group">
+                <label for="crisp_q2">¿Cuáles son los criterios de éxito del proyecto (Métricas clave/KPIs)?</label>
+                <textarea id="crisp_q2" placeholder="Escribe tu respuesta aquí..."></textarea>
+                <div class="actions">
+                    <button class="btn-save" onclick="saveAnswer('crisp_q2')">Guardar</button>
+                    <button class="btn-delete" onclick="deleteAnswer('crisp_q2')">Borrar</button>
+                    <span id="status-crisp_q2" class="status-msg"></span>
+                </div>
+            </div>
+        </div>
+
+        <!-- FASE 2 -->
+        <div class="phase-card">
+            <h2 class="phase-title">2. Comprensión de los Datos (Data Understanding)</h2>
+            
+            <div class="question-group">
+                <label for="crisp_q3">¿Qué fuentes de datos están disponibles y cuál es su estructura/origen?</label>
+                <textarea id="crisp_q3" placeholder="Escribe tu respuesta aquí..."></textarea>
+                <div class="actions">
+                    <button class="btn-save" onclick="saveAnswer('crisp_q3')">Guardar</button>
+                    <button class="btn-delete" onclick="deleteAnswer('crisp_q3')">Borrar</button>
+                    <span id="status-crisp_q3" class="status-msg"></span>
+                </div>
+            </div>
+
+            <div class="question-group">
+                <label for="crisp_q4">¿Cuáles son los hallazgos iniciales o problemas detectados en los datos (valores nulos, inconsistencias)?</label>
+                <textarea id="crisp_q4" placeholder="Escribe tu respuesta aquí..."></textarea>
+                <div class="actions">
+                    <button class="btn-save" onclick="saveAnswer('crisp_q4')">Guardar</button>
+                    <button class="btn-delete" onclick="deleteAnswer('crisp_q4')">Borrar</button>
+                    <span id="status-crisp_q4" class="status-msg"></span>
+                </div>
+            </div>
+        </div>
+
+        <!-- FASE 3 -->
+        <div class="phase-card">
+            <h2 class="phase-title">3. Preparación de los Datos (Data Preparation)</h2>
+            
+            <div class="question-group">
+                <label for="crisp_q5">¿Qué técnicas de limpieza de datos se aplican (e.g. COALESCE, tratamiento de nulos, formateo)?</label>
+                <textarea id="crisp_q5" placeholder="Escribe tu respuesta aquí..."></textarea>
+                <div class="actions">
+                    <button class="btn-save" onclick="saveAnswer('crisp_q5')">Guardar</button>
+                    <button class="btn-delete" onclick="deleteAnswer('crisp_q5')">Borrar</button>
+                    <span id="status-crisp_q5" class="status-msg"></span>
+                </div>
+            </div>
+
+            <div class="question-group">
+                <label for="crisp_q6">¿Se requiere ingeniería de características (Feature Engineering) o transformación de variables?</label>
+                <textarea id="crisp_q6" placeholder="Escribe tu respuesta aquí..."></textarea>
+                <div class="actions">
+                    <button class="btn-save" onclick="saveAnswer('crisp_q6')">Guardar</button>
+                    <button class="btn-delete" onclick="deleteAnswer('crisp_q6')">Borrar</button>
+                    <span id="status-crisp_q6" class="status-msg"></span>
+                </div>
+            </div>
+        </div>
+
+        <!-- FASE 4 -->
+        <div class="phase-card">
+            <h2 class="phase-title">4. Modelado (Modeling)</h2>
+            
+            <div class="question-group">
+                <label for="crisp_q7">¿Qué algoritmos o modelos de minería/ML se seleccionan para el análisis?</label>
+                <textarea id="crisp_q7" placeholder="Escribe tu respuesta aquí..."></textarea>
+                <div class="actions">
+                    <button class="btn-save" onclick="saveAnswer('crisp_q7')">Guardar</button>
+                    <button class="btn-delete" onclick="deleteAnswer('crisp_q7')">Borrar</button>
+                    <span id="status-crisp_q7" class="status-msg"></span>
+                </div>
+            </div>
+        </div>
+
+        <!-- FASE 5 -->
+        <div class="phase-card">
+            <h2 class="phase-title">5. Evaluación (Evaluation)</h2>
+            
+            <div class="question-group">
+                <label for="crisp_q8">¿Los resultados del modelo cumplen con los criterios de éxito del negocio/proyecto?</label>
+                <textarea id="crisp_q8" placeholder="Escribe tu respuesta aquí..."></textarea>
+                <div class="actions">
+                    <button class="btn-save" onclick="saveAnswer('crisp_q8')">Guardar</button>
+                    <button class="btn-delete" onclick="deleteAnswer('crisp_q8')">Borrar</button>
+                    <span id="status-crisp_q8" class="status-msg"></span>
+                </div>
+            </div>
+        </div>
+
+        <!-- FASE 6 -->
+        <div class="phase-card">
+            <h2 class="phase-title">6. Despliegue (Deployment)</h2>
+            
+            <div class="question-group">
+                <label for="crisp_q9">¿Cómo se entregarán o presentarán los resultados (Dashboards Power BI, Reportes, API)?</label>
+                <textarea id="crisp_q9" placeholder="Escribe tu respuesta aquí..."></textarea>
+                <div class="actions">
+                    <button class="btn-save" onclick="saveAnswer('crisp_q9')">Guardar</button>
+                    <button class="btn-delete" onclick="deleteAnswer('crisp_q9')">Borrar</button>
+                    <span id="status-crisp_q9" class="status-msg"></span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ================= METODOLOGÍA KDD ================= -->
+    <div id="kdd" class="tab-content">
+        
+        <!-- ETAPA 1 -->
+        <div class="phase-card">
+            <h2 class="phase-title">1. Selección (Selection)</h2>
+            <div class="question-group">
+                <label for="kdd_q1">¿Qué subconjunto de datos o variables relevantes se seleccionarán del conjunto de datos original?</label>
+                <textarea id="kdd_q1" placeholder="Describe los criterios de selección de variables y filas..."></textarea>
+                <div class="actions">
+                    <button class="btn-save" onclick="saveAnswer('kdd_q1')">Guardar</button>
+                    <button class="btn-delete" onclick="deleteAnswer('kdd_q1')">Borrar</button>
+                    <span id="status-kdd_q1" class="status-msg"></span>
+                </div>
+            </div>
+        </div>
+
+        <!-- ETAPA 2 -->
+        <div class="phase-card">
+            <h2 class="phase-title">2. Preprocesamiento / Limpieza (Preprocessing / Cleaning)</h2>
+            <div class="question-group">
+                <label for="kdd_q2">¿Cómo se tratan los valores faltantes, atípicos (outliers) y el ruido en los datos seleccionados?</label>
+                <textarea id="kdd_q2" placeholder="Detalla estrategias de imputación o remoción de ruido..."></textarea>
+                <div class="actions">
+                    <button class="btn-save" onclick="saveAnswer('kdd_q2')">Guardar</button>
+                    <button class="btn-delete" onclick="deleteAnswer('kdd_q2')">Borrar</button>
+                    <span id="status-kdd_q2" class="status-msg"></span>
+                </div>
+            </div>
+        </div>
+
+        <!-- ETAPA 3 -->
+        <div class="phase-card">
+            <h2 class="phase-title">3. Transformación (Transformation)</h2>
+            <div class="question-group">
+                <label for="kdd_q3">¿Qué técnicas de reducción de dimensión, normalización o agregación se aplican a los datos?</label>
+                <textarea id="kdd_q3" placeholder="Menciona si escalas variables, usas PCA o agrupaciones..."></textarea>
+                <div class="actions">
+                    <button class="btn-save" onclick="saveAnswer('kdd_q3')">Guardar</button>
+                    <button class="btn-delete" onclick="deleteAnswer('kdd_q3')">Borrar</button>
+                    <span id="status-kdd_q3" class="status-msg"></span>
+                </div>
+            </div>
+        </div>
+
+        <!-- ETAPA 4 -->
+        <div class="phase-card">
+            <h2 class="phase-title">4. Minería de Datos (Data Mining)</h2>
+            <div class="question-group">
+                <label for="kdd_q4">¿Qué tarea de Data Mining se aplicará (Clasificación, Regresión, Clustering, Reglas de Asociación) y con qué técnica?</label>
+                <textarea id="kdd_q4" placeholder="Especifica los modelos o algoritmos clave a ejecutar..."></textarea>
+                <div class="actions">
+                    <button class="btn-save" onclick="saveAnswer('kdd_q4')">Guardar</button>
+                    <button class="btn-delete" onclick="deleteAnswer('kdd_q4')">Borrar</button>
+                    <span id="status-kdd_q4" class="status-msg"></span>
+                </div>
+            </div>
+        </div>
+
+        <!-- ETAPA 5 -->
+        <div class="phase-card">
+            <h2 class="phase-title">5. Evaluación e Interpretación (Interpretation / Evaluation)</h2>
+            <div class="question-group">
+                <label for="kdd_q5">¿Qué patrones o conocimiento valioso se extrajeron y cómo se interpretan para la toma de decisiones?</label>
+                <textarea id="kdd_q5" placeholder="Resume el conocimiento descubierto y sus implicaciones..."></textarea>
+                <div class="actions">
+                    <button class="btn-save" onclick="saveAnswer('kdd_q5')">Guardar</button>
+                    <button class="btn-delete" onclick="deleteAnswer('kdd_q5')">Borrar</button>
+                    <span id="status-kdd_q5" class="status-msg"></span>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<script>
+    // Cargar respuestas guardadas al iniciar la página
+    window.onload = function() {
+        const textareas = document.querySelectorAll('textarea');
+        textareas.forEach(textarea => {
+            const savedValue = localStorage.getItem(textarea.id);
+            if (savedValue) {
+                textarea.value = savedValue;
+            }
+        });
+    };
+
+    // Cambio de pestañas (Tabs)
+    function switchTab(tabId, btnElement) {
+        // Ocultar todos los contenidos
+        const contents = document.querySelectorAll('.tab-content');
+        contents.forEach(c => c.classList.remove('active'));
+
+        // Desactivar todos los botones
+        const buttons = document.querySelectorAll('.tab-btn');
+        buttons.forEach(b => b.classList.remove('active'));
+
+        // Activar la pestaña elegida
+        document.getElementById(tabId).classList.add('active');
+        btnElement.classList.add('active');
+    }
+
+    // Función para guardar respuesta en localStorage
+    function saveAnswer(id) {
+        const val = document.getElementById(id).value;
+        localStorage.setItem(id, val);
+        showStatus(id, '✓ Guardado');
+    }
+
+    // Función para borrar respuesta
+    function deleteAnswer(id) {
+        document.getElementById(id).value = '';
+        localStorage.removeItem(id);
+        showStatus(id, '✗ Borrado');
+    }
+
+    // Mostrar mensaje temporal de estado
+    function showStatus(id, msg) {
+        const statusEl = document.getElementById('status-' + id);
+        statusEl.innerText = msg;
+        setTimeout(() => {
+            statusEl.innerText = '';
+        }, 2000);
+    }
+</script>
+
+</body>
+</html>
