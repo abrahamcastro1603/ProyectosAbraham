@@ -5,9 +5,12 @@
 
 ---
 
-### 👋 Sobre mí
-<strong>Junior Data Analyst | Power BI Developer | Venta Consultiva B2C (8 años)
-​Perfil: Lic. en Informática. Traduzco necesidades comerciales en arquitecturas analíticas y dashboards ejecutivos.</strong>
+<h3>👋 Sobre mí</h3>
+<p>
+  <strong>Junior Data Analyst | Power BI Developer</strong><br>
+  <i>8 años de experiencia en Venta Consultiva B2C</i><br>
+  Licenciado en Informática. Mi mayor fortaleza es traducir necesidades comerciales complejas en arquitecturas analíticas claras, modelos de datos sólidos y dashboards ejecutivos orientados a la toma de decisiones.
+</p>
 ​
 
 ---
