@@ -3,6 +3,10 @@
   <p><b>Desarrollador y Analista de Datos en formación</b> | Apasionado por la tecnología, la analítica y la nube.</p>
 </div>
 
+<div align="center">
+  <code>Utiliza el link de arriba, para ver mi proyecto de <strong>Mineria de datos</strong></code>
+</div>
+
 ---
 
 <h3>👋 Sobre mí</h3>
