@@ -17,7 +17,7 @@
 | Categoría | Tecnologías / Herramientas |
 | :--- | :--- |
 | **Lenguajes** | <code>Python (3.12)</code>, <code>SQL</code>,<code>HTML</code>,<code>DAX.</code> ML <strong>(scikit-learn)</strong>|
-| **Datos & Cloud** | <code>Modelado Dimensional.</code>ETL & Data Pipeline: Power Query (M)</code>, <code>Pandas</code>, <code>Power BI</code>,<code>SQL</code>, <code>Docker</code>, <code>Google Cloud Platform (BigQuery, Dataflow, Cloud Functions)</code> |
+| **Datos & Cloud** | <code>Modelado Dimensional.</code>,<code>ETL & Data Pipeline: Power Query (M)</code>, <code>Pandas</code>, <code>Power BI</code>,<code>SQL</code>, <code>Docker</code>, <code>Google Cloud Platform (BigQuery, Dataflow, Cloud Functions)</code> |
 | **IA & Seguridad** | <code>Machine Learning</code>, <code>Deep Learning</code>, <code>Computer Vision</code>, <code>NLP</code>, <code>ISO 27001</code> |
 | **BI & Visualización** | <code>Power BI</code>, <code>Business Intelligence</code>,<code> Clustering con <strong>(scikit-learn)</strong></code> |
 
