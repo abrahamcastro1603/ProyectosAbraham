@@ -31,5 +31,5 @@
 ---
 
 <div align="center">
-  <i>"La disciplina y la constancia construyen el código del éxito." 💻✨</i>
+  <i>"La disciplina y la constancia construyen el código del éxito." ✨</i>
 </div>
