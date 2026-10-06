@@ -100,12 +100,19 @@
             border-radius: 12px;
             overflow: hidden;
             backdrop-filter: blur(10px);
-            transition: transform 0.3s ease, border-color 0.3s ease;
+            transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+            cursor: pointer;
         }
 
         .card:hover {
             transform: translateY(-5px);
             border-color: var(--primary);
+            box-shadow: 0 10px 25px -5px rgba(59, 130, 246, 0.3);
+        }
+
+        .img-container {
+            position: relative;
+            overflow: hidden;
         }
 
         .card img {
@@ -113,6 +120,25 @@
             height: auto;
             display: block;
             border-bottom: 1px solid var(--border-color);
+            transition: transform 0.3s ease;
+        }
+
+        .card:hover img {
+            transform: scale(1.03);
+        }
+
+        .img-hint {
+            position: absolute;
+            bottom: 10px;
+            right: 10px;
+            background: rgba(0, 0, 0, 0.75);
+            color: #fff;
+            padding: 4px 10px;
+            border-radius: 6px;
+            font-size: 0.75rem;
+            backdrop-filter: blur(4px);
+            pointer-events: none;
+            border: 1px solid var(--border-color);
         }
 
         .card-body {
@@ -168,6 +194,66 @@
             font-size: 0.9rem;
         }
 
+        /* Modal / Lightbox CSS */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(5, 8, 15, 0.92);
+            backdrop-filter: blur(8px);
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .modal.show {
+            display: flex;
+            opacity: 1;
+        }
+
+        .modal-content {
+            max-width: 90vw;
+            max-height: 85vh;
+            border-radius: 10px;
+            box-shadow: 0 0 30px rgba(59, 130, 246, 0.4);
+            border: 1px solid var(--border-color);
+            object-fit: contain;
+        }
+
+        .modal-caption {
+            position: absolute;
+            bottom: 25px;
+            text-align: center;
+            color: var(--text-main);
+            font-size: 1.1rem;
+            background: rgba(15, 23, 42, 0.85);
+            padding: 8px 20px;
+            border-radius: 20px;
+            border: 1px solid var(--border-color);
+        }
+
+        .close-btn {
+            position: absolute;
+            top: 20px;
+            right: 30px;
+            color: #ffffff;
+            font-size: 35px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: color 0.2s ease;
+            user-select: none;
+        }
+
+        .close-btn:hover {
+            color: var(--primary);
+        }
+
         footer {
             text-align: center;
             padding: 40px;
@@ -199,8 +285,11 @@
         <div class="grid">
 
             <!-- Card 1: Acceso / Login -->
-            <div class="card">
-                <img src="acceso_chatbot.png" alt="Módulo de Acceso al Chatbot">
+            <div class="card" onclick="openModal('acceso_chatbot.png', '1. Autenticación y Control de Acceso')">
+                <div class="img-container">
+                    <img src="acceso_chatbot.png" alt="Módulo de Acceso al Chatbot">
+                    <span class="img-hint">🔍 Clic para ampliar</span>
+                </div>
                 <div class="card-body">
                     <h3>1. Autenticación y Control de Acceso</h3>
                     <p>Módulo de inicio de sesión seguro. Los usuarios son dados de alta desde la administración centralizada con almacenamiento cifrado en <strong>AES-256</strong>.</p>
@@ -208,8 +297,11 @@
             </div>
 
             <!-- Card 2: Backend AIM -->
-            <div class="card">
-                <img src="backend_aim.png" alt="Backend AIM Flask Server">
+            <div class="card" onclick="openModal('backend_aim.png', '2. Microservicio AIM (Puerto 8001)')">
+                <div class="img-container">
+                    <img src="backend_aim.png" alt="Backend AIM Flask Server">
+                    <span class="img-hint">🔍 Clic para ampliar</span>
+                </div>
                 <div class="card-body">
                     <h3>2. Microservicio AIM <span class="port-tag">Puerto 8001</span></h3>
                     <p>Servidor Flask encargado de la gestión de identidades, autenticación y validación del cifrado de usuarios en entorno seguro local.</p>
@@ -217,8 +309,11 @@
             </div>
 
             <!-- Card 3: Backend Chatbot -->
-            <div class="card">
-                <img src="backend_chatbot.png" alt="Backend Chatbot FastAPI Uvicorn">
+            <div class="card" onclick="openModal('backend_chatbot.png', '3. Engine del Chatbot (Puerto 8000)')">
+                <div class="img-container">
+                    <img src="backend_chatbot.png" alt="Backend Chatbot FastAPI Uvicorn">
+                    <span class="img-hint">🔍 Clic para ampliar</span>
+                </div>
                 <div class="card-body">
                     <h3>3. Engine del Chatbot <span class="port-tag">Puerto 8000</span></h3>
                     <p>Microservicio en FastAPI / Uvicorn que procesa las consultas del usuario conectándose con el LLM <strong>Gemini 3.5 Flash Lite</strong>.</p>
@@ -226,8 +321,11 @@
             </div>
 
             <!-- Card 4: Dashboard Chatbot -->
-            <div class="card">
-                <img src="chatbot.png" alt="Chatbot generando Dashboards HTML y Tablas">
+            <div class="card" onclick="openModal('chatbot.png', '4. Generación Nativa de Dashboards')">
+                <div class="img-container">
+                    <img src="chatbot.png" alt="Chatbot generando Dashboards HTML y Tablas">
+                    <span class="img-hint">🔍 Clic para ampliar</span>
+                </div>
                 <div class="card-body">
                     <h3>4. Generación Nativa de Dashboards</h3>
                     <p>El chatbot interpreta el contexto del JSON homologado con las métricas DAX de Power BI y renderiza componentes visuales y tablas directo en el Frontend.</p>
@@ -243,7 +341,7 @@
             <div class="specs-grid">
                 <div class="spec-item">
                     <h4>Cifrado AES-256</h4>
-                    <p>Los credenciales y la base de datos de usuarios administrados están protegidos criptográficamente en repositorios locales.</p>
+                    <p>Las credenciales y la base de datos de usuarios administrados están protegidos criptográficamente en repositorios locales.</p>
                 </div>
                 <div class="spec-item">
                     <h4>Contexto JSON & DAX</h4>
@@ -262,9 +360,50 @@
 
     </div>
 
+    <!-- Modal / Visor de Imágenes -->
+    <div id="imageModal" class="modal" onclick="closeModal(event)">
+        <span class="close-btn" onclick="closeModalForce()">&times;</span>
+        <img class="modal-content" id="modalImg">
+        <div class="modal-caption" id="modalCaption"></div>
+    </div>
+
     <footer>
+        <p>Jesus Abraham Castro Torres Jr Analista de Datos Power BI</p>
         <p>Desarrollado para el Instituto Tecnológico de Cancún — Plataforma de Business Intelligence & IA Académica</p>
     </footer>
+
+    <script>
+        function openModal(imageSrc, captionText) {
+            const modal = document.getElementById("imageModal");
+            const modalImg = document.getElementById("modalImg");
+            const caption = document.getElementById("modalCaption");
+
+            modalImg.src = imageSrc;
+            caption.innerText = captionText;
+            modal.classList.add("show");
+            document.body.style.overflow = "hidden"; // Evita el scroll detrás del modal
+        }
+
+        function closeModalForce() {
+            const modal = document.getElementById("imageModal");
+            modal.classList.remove("show");
+            document.body.style.overflow = "auto";
+        }
+
+        function closeModal(event) {
+            // Cierra el modal únicamente si se hace clic fuera de la imagen
+            if (event.target.id === "imageModal") {
+                closeModalForce();
+            }
+        }
+
+        // Permitir cerrar con la tecla Escape (Esc)
+        document.addEventListener('keydown', function(event) {
+            if (event.key === "Escape") {
+                closeModalForce();
+            }
+        });
+    </script>
 
 </body>
 </html>
