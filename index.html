@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Chatbot Analista de Datos | Instituto Tecnológico de Cancún</title>
+  <meta name="description" content="Chatbot de minería de datos que consulta una base SQLite en lenguaje natural con Gemini 3.5 Flash-Lite. ETL, SQL seguro y gráficas automáticas." />
+  <meta property="og:title" content="Chatbot Analista de Datos – IT Cancún" />
+  <meta property="og:description" content="Pregunta en español y obtén respuestas con SQL y gráficas desde una base de 9,000 registros académicos." />
+  <meta property="og:type" content="website" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+  <!-- NAV -->
+  <nav class="nav">
+    <div class="container nav-inner">
+      <div class="brand">
+        <span class="brand-icon">📊</span>
+        <span>IT Cancún · Data Chatbot</span>
+      </div>
+      <div class="nav-links">
+        <a href="#capacidades">Capacidades</a>
+        <a href="#arquitectura">Arquitectura</a>
+        <a href="#demo">Demo</a>
+        <a href="#tech">Stack</a>
+        <a href="#github" class="btn-nav">GitHub</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <header class="hero">
+    <div class="container hero-grid">
+      <div class="hero-text">
+        <div class="badge">Proyecto de Minería de Datos · ETL + IA</div>
+        <h1>Chatbot que consulta<br /><span class="gradient">bases de datos SQL</span><br />en lenguaje natural</h1>
+        <p class="lead">
+          Pregunta en español sobre rendimiento académico y el sistema genera SQL seguro,
+          consulta una base SQLite de <strong>9,000 registros</strong> y devuelve respuestas
+          con tablas y gráficas — impulsado por <strong>Gemini 3.5 Flash-Lite</strong>.
+        </p>
+        <div class="hero-cta">
+          <a href="#demo" class="btn btn-primary">Ver capturas</a>
+          <a href="#arquitectura" class="btn btn-ghost">Cómo funciona</a>
+        </div>
+        <div class="hero-stats">
+          <div><strong>9,000</strong><span>registros</span></div>
+          <div><strong>4</strong><span>carreras</span></div>
+          <div><strong>2022–2026</strong><span>periodos</span></div>
+          <div><strong>100%</strong><span>SQL local</span></div>
+        </div>
+      </div>
+      <div class="hero-visual">
+        <div class="browser-frame">
+          <div class="browser-bar">
+            <span></span><span></span><span></span>
+            <div class="url">localhost:8000 · Asistente Académico</div>
+          </div>
+          <img src="assets/chat-maestro.png" alt="Chatbot respondiendo qué maestro reprobó más" />
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- CAPACIDADES -->
+  <section id="capacidades" class="section">
+    <div class="container">
+      <h2 class="section-title">¿Qué puede hacer?</h2>
+      <p class="section-sub">Consultas en lenguaje natural sobre alumnos, maestros, carreras, reprobaciones y más.</p>
+      <div class="cards">
+        <article class="card">
+          <div class="card-icon">👨‍🏫</div>
+          <h3>Ranking de docentes</h3>
+          <p>Identifica qué maestro aprueba o reprueba más alumnos, por carrera, semestre o grupo.</p>
+          <code>“¿Qué maestro reprobó más en Informática?”</code>
+        </article>
+        <article class="card">
+          <div class="card-icon">📈</div>
+          <h3>Porcentajes y promedios</h3>
+          <p>Calcula tasas de aprobación por semestre, año, carrera o grupo con agregaciones SQL.</p>
+          <code>“Porcentaje de aprobados semestre 3 de 2024”</code>
+        </article>
+        <article class="card">
+          <div class="card-icon">📊</div>
+          <h3>Gráficas automáticas</h3>
+          <p>Genera comparativas de barras o pastel a partir de los resultados de la consulta.</p>
+          <code>“Comparativa de reprobados por carrera (gráfica)”</code>
+        </article>
+        <article class="card">
+          <div class="card-icon">👥</div>
+          <h3>Desagregación por género</h3>
+          <p>Cuenta reprobados o aprobados distinguiendo mujeres y hombres en un periodo dado.</p>
+          <code>“¿Cuántas mujeres y hombres reprobaron en 2023?”</code>
+        </article>
+        <article class="card">
+          <div class="card-icon">🎓</div>
+          <h3>Filtros por carrera y grupo</h3>
+          <p>Restringe el análisis a Informática, Civil, Mecatrónica, Administración, grupo A/B, etc.</p>
+          <code>“Reprobados en Informática, semestre 9, 2026, grupo A”</code>
+        </article>
+        <article class="card">
+          <div class="card-icon">🔒</div>
+          <h3>SQL solo lectura</h3>
+          <p>Solo permite SELECT. No se pueden modificar ni borrar datos desde el chat.</p>
+          <code>Protección contra INSERT / UPDATE / DROP</code>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ARQUITECTURA -->
+  <section id="arquitectura" class="section section-alt">
+    <div class="container">
+      <h2 class="section-title">Arquitectura del sistema</h2>
+      <p class="section-sub">De la pregunta en español hasta la gráfica, en un flujo claro y seguro.</p>
+
+      <div class="pipeline">
+        <div class="pipe-step">
+          <div class="pipe-num">1</div>
+          <h4>Pregunta</h4>
+          <p>El usuario escribe en lenguaje natural en el frontend.</p>
+        </div>
+        <div class="pipe-arrow">→</div>
+        <div class="pipe-step">
+          <div class="pipe-num">2</div>
+          <h4>Gemini 3.5 Flash-Lite</h4>
+          <p>Interpreta la pregunta con el diccionario de datos y genera SQL + explicación en JSON.</p>
+        </div>
+        <div class="pipe-arrow">→</div>
+        <div class="pipe-step">
+          <div class="pipe-num">3</div>
+          <h4>SQLite local</h4>
+          <p>Se ejecuta solo SELECT en la PC del usuario. <strong>No consume tokens</strong> de Gemini.</p>
+        </div>
+        <div class="pipe-arrow">→</div>
+        <div class="pipe-step">
+          <div class="pipe-num">4</div>
+          <h4>Respuesta + gráfica</h4>
+          <p>FastAPI devuelve texto, tabla y (si aplica) imagen generada con Matplotlib.</p>
+        </div>
+      </div>
+
+      <div class="sql-box">
+        <div class="sql-label">Ejemplo de SQL generado automáticamente</div>
+        <pre>SELECT nombre_del_maestro, COUNT(*) AS total_reprobados
+FROM alumnos_limpios
+WHERE aprobado = 0
+  AND carrera LIKE '%Informatica%'
+  AND semestre = 9
+  AND año_de_estudio = 2026
+  AND grupo = 'A'
+GROUP BY nombre_del_maestro
+ORDER BY total_reprobados DESC
+LIMIT 1;</pre>
+      </div>
+    </div>
+  </section>
+
+  <!-- ETL -->
+  <section class="section">
+    <div class="container">
+      <h2 class="section-title">Pipeline ETL previo</h2>
+      <p class="section-sub">Antes del chatbot, los datos pasaron por un proceso de extracción, transformación y carga.</p>
+      <div class="etl-grid">
+        <div class="etl-item">
+          <h4>Extract</h4>
+          <p>CSV sintético de alumnos del Instituto Tecnológico de Cancún (2022–2026).</p>
+        </div>
+        <div class="etl-item">
+          <h4>Transform</h4>
+          <ul>
+            <li>Eliminación de acentos</li>
+            <li><code>aprobado</code> como booleano (0/1)</li>
+            <li>Promedio por alumno</li>
+            <li>Validación de rangos y tipos</li>
+            <li>Estandarización de texto</li>
+          </ul>
+        </div>
+        <div class="etl-item">
+          <h4>Load</h4>
+          <p>Carga en SQLite (<code>alumnos_limpios</code>) con índices en <code>id_alumno</code>, <code>aprobado</code> y <code>carrera</code>.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- DEMO CAPTURAS -->
+  <section id="demo" class="section section-alt">
+    <div class="container">
+      <h2 class="section-title">Capturas del chatbot en acción</h2>
+      <p class="section-sub">Ejemplos reales de preguntas, SQL generado y visualizaciones.</p>
+
+      <div class="gallery">
+        <figure class="shot">
+          <img src="assets/chat-maestro.png" alt="Consulta: qué maestro reprobó más" loading="lazy" />
+          <figcaption>
+            <strong>Ranking de docentes</strong>
+            <span>Identifica al maestro con más reprobaciones y muestra el SQL ejecutado.</span>
+          </figcaption>
+        </figure>
+        <figure class="shot">
+          <img src="assets/chat-porcentaje.png" alt="Porcentaje de aprobados" loading="lazy" />
+          <figcaption>
+            <strong>Porcentaje de aprobados</strong>
+            <span>Cálculo agregado por semestre y año con consulta SQL.</span>
+          </figcaption>
+        </figure>
+        <figure class="shot">
+          <img src="assets/chat-grafica.png" alt="Gráfica comparativa por carrera" loading="lazy" />
+          <figcaption>
+            <strong>Gráfica comparativa</strong>
+            <span>Reprobados por carrera con gráfica de barras generada en el servidor.</span>
+          </figcaption>
+        </figure>
+        <figure class="shot">
+          <img src="assets/chat-consulta.png" alt="Consulta filtrada por carrera y semestre" loading="lazy" />
+          <figcaption>
+            <strong>Filtros combinados</strong>
+            <span>Carrera + semestre + año + grupo interpretados desde lenguaje natural.</span>
+          </figcaption>
+        </figure>
+      </div>
+    </div>
+  </section>
+
+  <!-- TECH -->
+  <section id="tech" class="section">
+    <div class="container">
+      <h2 class="section-title">Stack tecnológico</h2>
+      <div class="tech-grid">
+        <div class="tech-item"><span>Python</span> Backend y ETL</div>
+        <div class="tech-item"><span>FastAPI</span> API REST del chatbot</div>
+        <div class="tech-item"><span>Gemini 3.5 Flash-Lite</span> NLP → SQL</div>
+        <div class="tech-item"><span>SQLite</span> Base de datos local</div>
+        <div class="tech-item"><span>Pandas</span> Análisis y agregaciones</div>
+        <div class="tech-item"><span>Matplotlib / Seaborn</span> Gráficas</div>
+        <div class="tech-item"><span>HTML / CSS / JS</span> Interfaz de chat</div>
+        <div class="tech-item"><span>google-genai</span> SDK oficial Gemini</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TOKENS -->
+  <section class="section section-alt">
+    <div class="container narrow">
+      <h2 class="section-title">¿Qué consume tokens de Gemini?</h2>
+      <div class="token-table">
+        <div class="token-row ok">
+          <span>Entender la pregunta y generar SQL</span>
+          <span>Sí (Gemini)</span>
+        </div>
+        <div class="token-row no">
+          <span>Ejecutar el SQL en SQLite</span>
+          <span>No · local</span>
+        </div>
+        <div class="token-row no">
+          <span>Generar gráficas</span>
+          <span>No · local</span>
+        </div>
+        <div class="token-row no">
+          <span>Interfaz del chat</span>
+          <span>No · local</span>
+        </div>
+      </div>
+      <p class="note">El costo se mantiene bajo gracias a Flash-Lite y a que el volumen de datos se procesa en el equipo del usuario.</p>
+    </div>
+  </section>
+
+  <!-- CTA / GITHUB -->
+  <section id="github" class="section cta-section">
+    <div class="container narrow center">
+      <h2>Proyecto académico · Instituto Tecnológico de Cancún</h2>
+      <p>
+        Desarrollado como parte de un proyecto de <strong>minería de datos y ETL</strong>:
+        generación de datos sintéticos, limpieza, base SQLite y chatbot analítico con IA generativa.
+      </p>
+      <div class="hero-cta center-cta">
+        <a href="https://github.com/" class="btn btn-primary" id="github-link" target="_blank" rel="noopener">Ver en GitHub</a>
+        <a href="#demo" class="btn btn-ghost">Ver demo visual</a>
+      </div>
+      <p class="small-note">Sustituye el enlace de GitHub por la URL de tu repositorio cuando lo publiques.</p>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="container footer-inner">
+      <span>Chatbot Analista de Datos · IT Cancún</span>
+      <span>Gemini 3.5 Flash-Lite · FastAPI · SQLite</span>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+</body>
+</html>
