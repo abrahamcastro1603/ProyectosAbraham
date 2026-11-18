@@ -1,0 +1,2 @@
+Saludos cordiales, antes de empezar hay que instalar los requerimientos para que el boot funcione:
+pip install -r requirements.txt
