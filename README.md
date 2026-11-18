@@ -1,6 +1,6 @@
 # English Speaking Tutor (Versión Recortada A1-B1) - Gemini 3.5 Flash Lite
 
-Aplicación de escritorio desarrollada en Python con **Tkinter**, **Google Gemini 3.5 Flash Lite**, **Edge-TTS** y persistencia en **SQLite**. Esta variante está optimizada y recortada profesionalmente para cubrir los niveles CEFR de **A1 hasta B1** (Principiante a Intermedio).
+Aplicación de escritorio desarrollada en Python con **Tkinter**, **Google Gemini 3.5 Flash Lite**, **Edge-TTS** y persistencia en **SQLite**. Esta variante está optimizada profesionalmente para cubrir los niveles CEFR de **A1 hasta B1** (Principiante a Intermedio).
 
 ---
 
